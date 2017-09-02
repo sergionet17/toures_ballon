@@ -34,7 +34,7 @@ public class GreetingController {
     public List<Greeting> greeting_test() {
         List<Greeting> lista =  new ArrayList<Greeting>();
         Greeting greeting = new Greeting(0, "test_lista");
-        Greeting greeting_2 = new Greeting(1, "parcial");
+        Greeting greeting_2 = new Greeting(1, "este es un test de git");
         lista.add(greeting_2);
         lista.add(greeting);
         return lista;
