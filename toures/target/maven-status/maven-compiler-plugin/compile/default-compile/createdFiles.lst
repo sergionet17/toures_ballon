@@ -1,3 +1,8 @@
-com/example/demo/DemoApplication.class
-com/example/demo/GreetingController.class
-com/example/demo/Greeting.class
+netgloo/models/Campaña.class
+netgloo/principal/GreetingController.class
+netgloo/principal/DemoApplication.class
+netgloo/models/User.class
+netgloo/principal/Greeting.class
+netgloo/models/CampañaDao.class
+netgloo/models/UserDao.class
+netgloo/configs/DatabaseConfig.class

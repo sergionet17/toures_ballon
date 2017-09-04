@@ -1,5 +1,7 @@
 package netgloo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import netgloo.models.User;
 import netgloo.models.UserDao;
 
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import netgloo.models.Greeting;
 
 /**
  * Class UserController
@@ -84,7 +87,17 @@ public class UserController {
       return "Error updating the user: " + ex.toString();
     }
     return "User succesfully updated!";
-  } 
+  }
+  
+    @RequestMapping("/lista")
+    public List<Greeting> greeting_test() {
+        List<Greeting> lista =  new ArrayList<Greeting>();
+        Greeting greeting = new Greeting(0, "test_lista");
+        Greeting greeting_2 = new Greeting(1, "este es un test de git");
+        lista.add(greeting_2);
+        lista.add(greeting);
+        return lista;
+    }
 
   // ------------------------
   // PRIVATE FIELDS

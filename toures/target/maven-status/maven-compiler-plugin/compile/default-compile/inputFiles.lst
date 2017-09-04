@@ -1,3 +1,8 @@
-/home/sergio/reposotorio-git/toures-ballon/toures/src/main/java/com/example/demo/DemoApplication.java
-/home/sergio/reposotorio-git/toures-ballon/toures/src/main/java/com/example/demo/Greeting.java
-/home/sergio/reposotorio-git/toures-ballon/toures/src/main/java/com/example/demo/GreetingController.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/principal/DemoApplication.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/principal/Greeting.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/models/Campaña.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/models/User.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/models/CampañaDao.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/models/UserDao.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/principal/GreetingController.java
+/home/sergio/toures-ballon/toures/src/main/java/netgloo/configs/DatabaseConfig.java
