@@ -26,7 +26,7 @@ public class UserController {
   @ResponseBody
   public String create(String email, String name) {
     try {
-      User user = new User(email, name);
+      User user = new User("test", "test");
       userDao.create(user);
     }
     catch (Exception ex) {
