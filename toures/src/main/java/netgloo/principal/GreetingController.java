@@ -13,7 +13,9 @@ import netgloo.models.CampañaDao;
 import netgloo.models.User;
 import netgloo.models.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +42,7 @@ public class GreetingController {
                             String.format(template, name));
     }
     
-    @RequestMapping("/lista")
+    @RequestMapping(value="/lista",method = RequestMethod.GET)
     public List<Greeting> greeting_test() {
         List<Greeting> lista =  new ArrayList<Greeting>();
         Greeting greeting = new Greeting(0, "test_lista");
@@ -49,26 +51,26 @@ public class GreetingController {
         lista.add(greeting);
         return lista;
     }
-   
-  @RequestMapping(value="/get-by-email")
+   /*
+  @RequestMapping(value="/get-by-email",method = RequestMethod.GET)
   @ResponseBody
   public String getByEmail(String email) {
     String userId;
     try {
-      Campaña campaña = campañaDao.getByEmail(email);
-      userId = String.valueOf(campaña.getId());
+//      Campaña campaña = campañaDao.getByEmail(email);
+ //     userId = String.valueOf(campaña.getEmail());
     }
     catch (Exception ex) {
       return "User not found: " + ex.toString();
     }
     return "The user id is: " + userId;
-  }
-  
-  @RequestMapping(value="/create")
+  }*/
+ 
+  @RequestMapping(value="/create",method = RequestMethod.POST)
   @ResponseBody
-  public String create(String email, String name) {
+  public String create(@RequestParam("email") String email, @RequestParam("name") String name) {
     try {
-      Campaña campaña = new Campaña("test", "test");
+      Campaña campaña = new Campaña(email, name);
       campañaDao.create(campaña);
     }
     catch (Exception ex) {
@@ -76,5 +78,17 @@ public class GreetingController {
     }
     return "User succesfully created!";
   }
+  
+  @RequestMapping(value = "/user/{email}", method = RequestMethod.GET)
+	public Campaña getUser(@PathVariable("email") String email) {
+        
+        List<Campaña> listCampaña = new ArrayList<Campaña>();
+        listCampaña = campañaDao.getByEmail(email);
+        Campaña campaña = new Campaña();
+        campaña = listCampaña.get(0);
+        return campaña;
+        }
+  
+  
     
 }

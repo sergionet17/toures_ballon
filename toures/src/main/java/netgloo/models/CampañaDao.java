@@ -1,5 +1,6 @@
 package netgloo.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -56,11 +57,12 @@ public class CampañaDao {
   /**
    * Return the user having the passed email.
    */
-  public Campaña getByEmail(String email) {
-    return (Campaña) entityManager.createQuery(
-        "from User where email = :email")
+  public List<Campaña> getByEmail(String email) {
+    List<Campaña> list = new ArrayList<>();
+      return  (list) = entityManager.createQuery(
+        "from CAMPAÑA where email = :email")
         .setParameter("email", email)
-        .getSingleResult();
+        .getResultList();
   }
 
   /**

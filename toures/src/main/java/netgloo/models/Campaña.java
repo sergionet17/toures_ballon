@@ -11,18 +11,16 @@ import javax.validation.constraints.NotNull;
  * Represents an User for this web application.
  */
 @Entity
-@Table(name = "campaña")
+@Table(name = "Campaña")
 public class Campaña {
 
   // ------------------------
   // PRIVATE FIELDS
   // ------------------------
   
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
   
   @NotNull
+  @Id
   private String email;
   
   @NotNull
@@ -34,21 +32,9 @@ public class Campaña {
   
   public Campaña() { }
 
-  public Campaña(long id) { 
-    this.id = id;
-  }
-
   public Campaña(String email, String name) {
     this.email = email;
     this.name = name;
-  }
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long value) {
-    this.id = value;
   }
 
   public String getEmail() {
