@@ -60,7 +60,7 @@ public class CampañaDao {
   public List<Campaña> getByEmail(String email) {
     List<Campaña> list = new ArrayList<>();
       return  (list) = entityManager.createQuery(
-        "from CAMPAÑA where email = :email")
+        "from Campaña where email = :email")
         .setParameter("email", email)
         .getResultList();
   }
