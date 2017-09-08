@@ -38,12 +38,13 @@ public class CampañaDao {
   /**
    * Delete the user from the database.
    */
-  public void delete(Campaña campaña) {
-    if (entityManager.contains(campaña))
-      entityManager.remove(campaña);
+  public void delete(Campaña campana) {
+
+     if (entityManager.contains(campana))
+      entityManager.remove(campana);
     else
-      entityManager.remove(entityManager.merge(campaña));
-    return;
+      entityManager.remove(entityManager.merge(campana));
+    return;      
   }
   
   /**
@@ -57,11 +58,11 @@ public class CampañaDao {
   /**
    * Return the user having the passed email.
    */
-  public List<Campaña> getByEmail(String email) {
+  public List<Campaña> getById(String id) {
     List<Campaña> list = new ArrayList<>();
       return  (list) = entityManager.createQuery(
-        "from Campaña where email = :email")
-        .setParameter("email", email)
+        "from Campaña where id = :id")
+        .setParameter("id", id)
         .getResultList();
   }
 

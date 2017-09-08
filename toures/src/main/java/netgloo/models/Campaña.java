@@ -14,43 +14,65 @@ import javax.validation.constraints.NotNull;
 @Table(name = "Campaña")
 public class Campaña {
 
-  // ------------------------
-  // PRIVATE FIELDS
-  // ------------------------
-  
-  
-  @NotNull
-  @Id
-  private String email;
-  
-  @NotNull
-  private String name;
+    // ------------------------
+    // PRIVATE FIELDS
+    // ------------------------
+    @NotNull
+    @Id
+    private String id;
 
-  // ------------------------
-  // PUBLIC METHODS
-  // ------------------------
-  
-  public Campaña() { }
+    @NotNull
+    private String name;
 
-  public Campaña(String email, String name) {
-    this.email = email;
-    this.name = name;
-  }
+    @NotNull
+    private int value;
 
-  public String getEmail() {
-    return email;
-  }
-  
-  public void setEmail(String value) {
-    this.email = value;
-  }
-  
-  public String getName() {
-    return name;
-  }
+    // ------------------------
+    // PUBLIC METHODS
+    // ------------------------
+    public Campaña() {
+    }
+    
+    public Campaña(String id) {
+        this.id = id;
+    }
 
-  public void setName(String value) {
-    this.name = value;
-  }
+    public Campaña(String id, String name,int value) {
+        this.id = id;
+        this.name = name;
+        this.value = value;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String value) {
+        this.id = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String value) {
+        this.name = value;
+    }
+
+    /**
+     * @return the value
+     */
+    public int getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(int value) {
+        this.value = value;
+    }
+
   
+
 } // class User
