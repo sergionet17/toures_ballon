@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
  * Represents an User for this web application.
  */
 @Entity
-@Table(name = "Campaña")
+@Table(name = "Campanas_tb")
 public class Campaña {
 
     // ------------------------
@@ -19,13 +19,28 @@ public class Campaña {
     // ------------------------
     @NotNull
     @Id
-    private String id;
+    private int codigo_campana;
 
     @NotNull
-    private String name;
+    private String nombre_campana;
 
     @NotNull
-    private int value;
+    private int codigo_producto;
+    
+    @NotNull
+    private String fecha_inicio;
+    
+    @NotNull
+    private String fecha_fin;
+    
+    @NotNull
+    private String estado;
+    
+    @NotNull
+    private String cantidad;
+    
+    @NotNull
+    private String precio;
 
     // ------------------------
     // PUBLIC METHODS
@@ -33,44 +48,134 @@ public class Campaña {
     public Campaña() {
     }
     
-    public Campaña(String id) {
-        this.id = id;
+    public Campaña(int codigo_campana) {
+        this.codigo_campana = codigo_campana;
     }
 
-    public Campaña(String id, String name,int value) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
+    public Campaña(int codigo_campana, String nombre_campana,int codigo_producto,
+            String fecha_inicio, String fecha_fin, String estado,String cantidad,String precio) {
+        this.codigo_campana = codigo_campana;
+        this.nombre_campana = nombre_campana;
+        this.codigo_producto = codigo_producto;
+        this.fecha_inicio = fecha_inicio;
+        this.fecha_fin = fecha_fin;
+        this.estado = estado;
+        this.cantidad = cantidad;
+        this.precio = precio;
     }
 
-    public String getId() {
-        return id;
+    public int getCodigo_campana() {
+        return codigo_campana;
     }
 
-    public void setId(String value) {
-        this.id = value;
+    public void setId(int codigo_campana) {
+        this.setCodigo_campana(codigo_campana);
     }
 
-    public String getName() {
-        return name;
+    public String getNombre_campana() {
+        return nombre_campana;
     }
 
-    public void setName(String value) {
-        this.name = value;
+    public void setNombre_campana(String nombre) {
+        this.nombre_campana = nombre;
     }
 
     /**
      * @return the value
      */
-    public int getValue() {
-        return value;
+    public int getCodigo_producto() {
+        return codigo_producto;
     }
 
     /**
      * @param value the value to set
      */
-    public void setValue(int value) {
-        this.value = value;
+    public void setValue(int codigo_producto) {
+        this.setCodigo_producto(codigo_producto);
+    }
+
+    /**
+     * @param codigo_campana the codigo_campana to set
+     */
+    public void setCodigo_campana(int codigo_campana) {
+        this.codigo_campana = codigo_campana;
+    }
+
+    /**
+     * @param codigo_producto the codigo_producto to set
+     */
+    public void setCodigo_producto(int codigo_producto) {
+        this.codigo_producto = codigo_producto;
+    }
+
+    /**
+     * @return the fecha_inicio
+     */
+    public String getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    /**
+     * @param fecha_inicio the fecha_inicio to set
+     */
+    public void setFecha_inicio(String fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    /**
+     * @return the fecha_fin
+     */
+    public String getFecha_fin() {
+        return fecha_fin;
+    }
+
+    /**
+     * @param fecha_fin the fecha_fin to set
+     */
+    public void setFecha_fin(String fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public String getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * @param cantidad the cantidad to set
+     */
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the precio
+     */
+    public String getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 
   

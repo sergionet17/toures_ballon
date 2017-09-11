@@ -55,7 +55,7 @@ public class CampañaDao {
    */
   @SuppressWarnings("unchecked")
   public List<Campaña> getAll() {
-    return entityManager.createQuery("from User").getResultList();
+    return entityManager.createQuery("from Campaña").getResultList();
   }
   
   /**
@@ -72,8 +72,12 @@ public class CampañaDao {
   /**
    * Return the user having the passed id.
    */
-  public Campaña getById(long id) {
-    return entityManager.find(Campaña.class, id);
+  public List<Campaña> getByCodigoCampana(int codigo_campana) {
+       List<Campaña> list = new ArrayList<>();
+      return  (list) = entityManager.createQuery(
+        "from Campaña where codigo_campana = :codigo_campana")
+        .setParameter("codigo_campana", codigo_campana)
+        .getResultList();
   }
 
   /**

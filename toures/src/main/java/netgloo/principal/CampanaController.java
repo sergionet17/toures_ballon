@@ -65,10 +65,13 @@ public class CampanaController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
-    public String createCampana(@RequestParam("id") String id,
-            @RequestParam("name") String name, @RequestParam("value") int value) {
+    public String createCampana(@RequestParam("codigo_campana") int codigo_campana,
+            @RequestParam("nombre_campana") String nombre_campana, @RequestParam("codigo_producto") int codigo_producto ,
+            @RequestParam("fecha_inicio") String fecha_inicio,@RequestParam("fecha_fin") String fecha_fin,
+            @RequestParam("estado") String estado,@RequestParam("cantidad") String cantidad,@RequestParam("precio") String precio) {
         try {
-            Campaña campaña = new Campaña(id, name, value);
+            Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
+            estado,cantidad,precio);
             campañaDao.create(campaña);
         } catch (Exception ex) {
             return "Error creating the user: " + ex.toString();
@@ -77,13 +80,13 @@ public class CampanaController {
     }
 
     // Metodo para obtner la campaña segun el email
-    //localhost:8080/user/12x
-    @RequestMapping(value = "/campana/{id}", method = RequestMethod.GET)
-    public Campaña getCampana(@PathVariable("id") String id) throws IndexOutOfBoundsException {
+    //localhost:8080/user/12
+    @RequestMapping(value = "/campana/{codigo_campana}", method = RequestMethod.GET)
+    public Campaña getCampana(@PathVariable("codigo_campana") int codigo_campana) throws IndexOutOfBoundsException {
         Campaña campaña = new Campaña();
         try {
             List<Campaña> listCampaña = new ArrayList<Campaña>();
-            listCampaña = campañaDao.getById(id);
+            listCampaña = campañaDao.getByCodigoCampana(codigo_campana);
             campaña = listCampaña.get(0);
 
         } catch (Exception e) {
@@ -94,10 +97,10 @@ public class CampanaController {
 
     // Metodo para eliminar la campaña
     //localhost:8080/user/12
-    @RequestMapping(value = "/campana/{id}", method = RequestMethod.DELETE)
-    public String deleteCampana(@PathVariable("id") String id) throws IndexOutOfBoundsException {
+    @RequestMapping(value = "/campana/{codigo_campana}", method = RequestMethod.DELETE)
+    public String deleteCampana(@PathVariable("codigo_campana") int codigo_campana) throws IndexOutOfBoundsException {
         try {
-            Campaña campaña = new Campaña(id);
+            Campaña campaña = new Campaña(codigo_campana);
             campañaDao.delete(campaña);
 
         } catch (Exception e) {
@@ -105,6 +108,24 @@ public class CampanaController {
             return "No existe una campaña con el id referenciado";
         }
         return "Se elimino la campana correctamente";
+    }
+    
+@RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public String updateCampana(@RequestParam("codigo_campana") int codigo_campana,
+            @RequestParam("nombre_campana") String nombre_campana, @RequestParam("codigo_producto") int codigo_producto ,
+            @RequestParam("fecha_inicio") String fecha_inicio,@RequestParam("fecha_fin") String fecha_fin,
+            @RequestParam("estado") String estado,@RequestParam("cantidad") String cantidad,@RequestParam("precio") String precio) {
+        try {
+            Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
+            estado,cantidad,precio);
+            campañaDao.update(campaña);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "No existe una campaña con el id referenciado";
+        }
+        return "Se actualizo la campaña";
     }
 
 }
