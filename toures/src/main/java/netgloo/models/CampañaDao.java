@@ -19,7 +19,10 @@ import org.springframework.stereotype.Repository;
  * Spring to magically call begin() and commit() at the start/end of the
  * method. If exception occurs it will also call rollback().
  */
+//un mecanismo para encapsular el almacenamiento, 
+//la recuperación y el comportamiento de búsqueda que emula una colección de objetos
 @Repository
+//@Transactinal es una anotación que le permite trabajar con transacciones de bases de datos de forma declarativa.
 @Transactional
 public class CampañaDao {
   
@@ -58,7 +61,7 @@ public class CampañaDao {
   /**
    * Return the user having the passed email.
    */
-  public List<Campaña> getById(String id) {
+  public List<Campaña> getById(String id)  {
     List<Campaña> list = new ArrayList<>();
       return  (list) = entityManager.createQuery(
         "from Campaña where id = :id")

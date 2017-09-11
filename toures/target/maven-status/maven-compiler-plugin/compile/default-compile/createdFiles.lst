@@ -1,5 +1,5 @@
 netgloo/models/Campaña.class
-netgloo/principal/GreetingController.class
+netgloo/principal/CampanaController.class
 netgloo/principal/DemoApplication.class
 netgloo/models/User.class
 netgloo/principal/Greeting.class
