@@ -8,8 +8,10 @@ package netgloo.principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import netgloo.models.Biblioteca;
 import netgloo.models.Campaña;
 import netgloo.models.CampañaDao;
+import netgloo.models.Libro;
 import netgloo.models.User;
 import netgloo.models.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +128,45 @@ public class CampanaController {
             return "No existe una campaña con el id referenciado";
         }
         return "Se actualizo la campaña";
+    }
+    
+    
+     // Metodo para eliminar la campaña
+    //localhost:8080/user/12
+    @RequestMapping(value = "/libro", method = RequestMethod.POST)
+    public String createLibro()throws IndexOutOfBoundsException {
+        try {
+            Libro libro = new Libro();
+            libro.setId_libro(2);
+            libro.setNombre("este");
+            campañaDao.createLibro(libro);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "No existe una campaña con el id referenciado";
+        }
+        return "Se elimino la campana correctamente";
+    }
+    
+        // Metodo para eliminar la campaña
+    //localhost:8080/user/12
+    @RequestMapping(value = "/biblioteca", method = RequestMethod.POST)
+    public String createBiblioteca()throws IndexOutOfBoundsException {
+        try {
+            Libro libro = new Libro();
+            libro.setId_libro(2);
+            libro.setNombre("este");
+            Biblioteca biblioteca = new Biblioteca();
+            biblioteca.setId_biblioteca(2);
+            biblioteca.setLibro(libro);
+            biblioteca.setNombre("central");
+            campañaDao.createBilblioteca(biblioteca);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "No existe una campaña con el id referenciado";
+        }
+        return "Se elimino la campana correctamente";
     }
 
 }

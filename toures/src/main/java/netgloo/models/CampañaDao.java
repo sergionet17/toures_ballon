@@ -38,6 +38,24 @@ public class CampañaDao {
     return;
   }
   
+    /**
+   * Save the user in the database.
+   */
+  public void createBilblioteca(Biblioteca bliBiblioteca) {
+    entityManager.persist(bliBiblioteca);
+    return;
+  }
+  
+  /**
+   * Save the user in the database.
+   */
+  public void createLibro(Libro libro) {
+    entityManager.persist(libro);
+    return;
+  }
+  
+  
+  
   /**
    * Delete the user from the database.
    */

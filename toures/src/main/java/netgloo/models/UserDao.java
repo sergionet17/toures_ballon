@@ -34,6 +34,14 @@ public class UserDao {
     return;
   }
   
+   /**
+   * Save the user in the database.
+   */
+  public void create_libro(Libro libro) {
+    entityManager.persist(libro);
+    return;
+  }
+  
   /**
    * Delete the user from the database.
    */
