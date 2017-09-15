@@ -29,8 +29,8 @@ public class ProductoDao {
     /**
      * Save the user in the database.
      */
-    public void create(Campaña campaña) {
-        entityManager.persist(campaña);
+    public void create(ProductoOrdenes productoOrdenes) {
+        entityManager.persist(productoOrdenes);
         return;
     }
 

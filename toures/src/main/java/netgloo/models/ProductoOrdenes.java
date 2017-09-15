@@ -6,6 +6,7 @@
 package netgloo.models;
 
 import java.util.Date;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,9 @@ import javax.validation.constraints.NotNull;
  *
  * @author sergio
  */
+@Entity(name="PRODUCTO_ORDENES_TB")
 public class ProductoOrdenes {
+
     @NotNull
     @Id
     private int codigoItem;
@@ -30,8 +33,20 @@ public class ProductoOrdenes {
     @NotNull
     private int cantidad;
     @ManyToOne
-    @JoinColumn(name = "id_libro")
-    private int codigoOrden;
+    @JoinColumn(name = "CODIGO_ORDEN")
+    private OrdenVenta ordenVenta;
+
+    public ProductoOrdenes(int codigoItem, int codigoProducto, String nombreProductoM, String numeroParte, int precio, int cantidad, OrdenVenta ordenVenta) {
+        this.codigoItem = codigoItem;
+        this.codigoProducto = codigoProducto;
+        this.nombreProductoM = nombreProductoM;
+        this.numeroParte = numeroParte;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.ordenVenta = ordenVenta;
+    }
+    
+    
 
     /**
      * @return the codigoItem
@@ -118,22 +133,17 @@ public class ProductoOrdenes {
     }
 
     /**
-     * @return the codigoOrden
+     * @return the ordenVenta
      */
-    public int getCodigoOrden() {
-        return codigoOrden;
+    public OrdenVenta getOrdenVenta() {
+        return ordenVenta;
     }
 
     /**
-     * @param codigoOrden the codigoOrden to set
+     * @param ordenVenta the ordenVenta to set
      */
-    public void setCodigoOrden(int codigoOrden) {
-        this.codigoOrden = codigoOrden;
+    public void setOrdenVenta(OrdenVenta ordenVenta) {
+        this.ordenVenta = ordenVenta;
     }
-
-
-
-
-
 
 }
