@@ -46,7 +46,7 @@ public class OrdenController {
                     numeroDocCliente, tipoDocCliente);
             ProductoOrdenes ordenes = new ProductoOrdenes(codigoItem, 
                     codigoProducto, nombreProductoM, numeroParte, precio, cantidad, ordenVenta);
-            ordenDao.create(ordenVenta);
+            ordenDao.create(ordenes);
         } catch (Exception ex) {
             return "Error creating the orden: " + ex.toString();
         }

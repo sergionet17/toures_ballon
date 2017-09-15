@@ -25,7 +25,7 @@ public class ProductoOrdenes {
     @NotNull
     private int codigoProducto;
     @NotNull
-    private String nombreProductoM;
+    private String nombreProducto;
     @NotNull
     private String numeroParte;
     @NotNull
@@ -36,10 +36,10 @@ public class ProductoOrdenes {
     @JoinColumn(name = "CODIGO_ORDEN")
     private OrdenVenta ordenVenta;
 
-    public ProductoOrdenes(int codigoItem, int codigoProducto, String nombreProductoM, String numeroParte, int precio, int cantidad, OrdenVenta ordenVenta) {
+    public ProductoOrdenes(int codigoItem, int codigoProducto, String nombreProducto, String numeroParte, int precio, int cantidad, OrdenVenta ordenVenta) {
         this.codigoItem = codigoItem;
         this.codigoProducto = codigoProducto;
-        this.nombreProductoM = nombreProductoM;
+        this.nombreProducto = nombreProducto;
         this.numeroParte = numeroParte;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -79,15 +79,15 @@ public class ProductoOrdenes {
     /**
      * @return the nombreProductoM
      */
-    public String getNombreProductoM() {
-        return nombreProductoM;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
     /**
      * @param nombreProductoM the nombreProductoM to set
      */
     public void setNombreProductoM(String nombreProductoM) {
-        this.nombreProductoM = nombreProductoM;
+        this.nombreProducto = nombreProductoM;
     }
 
     /**
