@@ -14,10 +14,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"netgloo.principal,netgloo.models"})
 @EntityScan("netgloo.models")
 @SpringBootApplication
-public class DemoApplication {
+public class DemoApplicationCustomer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(DemoApplicationCustomer.class, args);
 	}
         
 }
