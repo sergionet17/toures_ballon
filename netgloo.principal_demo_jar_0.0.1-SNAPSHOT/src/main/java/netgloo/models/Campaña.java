@@ -1,5 +1,6 @@
 package netgloo.models;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,163 +20,99 @@ public class Campaña {
     // ------------------------
     @NotNull
     @Id
-    private int codigo_campana;
+    private int idCampania;
 
     @NotNull
-    private String nombre_campana;
+    private String Campania;
 
     @NotNull
-    private int codigo_producto;
+    private String fchInicio;
     
     @NotNull
-    private String fecha_inicio;
+    private String fchFin;
     
     @NotNull
-    private String fecha_fin;
+    private String Imagen;
     
-    @NotNull
-    private String estado;
-    
-    @NotNull
-    private String cantidad;
-    
-    @NotNull
-    private String precio;
 
     // ------------------------
     // PUBLIC METHODS
     // ------------------------
-    public Campaña() {
+    public Campaña(int idCampania) {
+        this.idCampania = idCampania;
     }
     
-    public Campaña(int codigo_campana) {
-        this.codigo_campana = codigo_campana;
+     public Campaña() {
+        
     }
-
-    public Campaña(int codigo_campana, String nombre_campana,int codigo_producto,
-            String fecha_inicio, String fecha_fin, String estado,String cantidad,String precio) {
-        this.codigo_campana = codigo_campana;
-        this.nombre_campana = nombre_campana;
-        this.codigo_producto = codigo_producto;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.estado = estado;
-        this.cantidad = cantidad;
-        this.precio = precio;
-    }
-
-    public int getCodigo_campana() {
-        return codigo_campana;
-    }
-
-    public void setId(int codigo_campana) {
-        this.setCodigo_campana(codigo_campana);
-    }
-
-    public String getNombre_campana() {
-        return nombre_campana;
-    }
-
-    public void setNombre_campana(String nombre) {
-        this.nombre_campana = nombre;
+    /**
+     * @return the idCampania
+     */
+    public int getIdCampania() {
+        return idCampania;
     }
 
     /**
-     * @return the value
+     * @param idCampania the idCampania to set
      */
-    public int getCodigo_producto() {
-        return codigo_producto;
+    public void setIdCampania(int idCampania) {
+        this.idCampania = idCampania;
     }
 
     /**
-     * @param value the value to set
+     * @return the Campania
      */
-    public void setValue(int codigo_producto) {
-        this.setCodigo_producto(codigo_producto);
+    public String getCampania() {
+        return Campania;
     }
 
     /**
-     * @param codigo_campana the codigo_campana to set
+     * @param Campania the Campania to set
      */
-    public void setCodigo_campana(int codigo_campana) {
-        this.codigo_campana = codigo_campana;
+    public void setCampania(String Campania) {
+        this.Campania = Campania;
     }
 
     /**
-     * @param codigo_producto the codigo_producto to set
+     * @return the fchInicio
      */
-    public void setCodigo_producto(int codigo_producto) {
-        this.codigo_producto = codigo_producto;
+    public String getFchInicio() {
+        return fchInicio;
     }
 
     /**
-     * @return the fecha_inicio
+     * @param fchInicio the fchInicio to set
      */
-    public String getFecha_inicio() {
-        return fecha_inicio;
+    public void setFchInicio(String fchInicio) {
+        this.fchInicio = fchInicio;
     }
 
     /**
-     * @param fecha_inicio the fecha_inicio to set
+     * @return the fchFin
      */
-    public void setFecha_inicio(String fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public String getFchFin() {
+        return fchFin;
     }
 
     /**
-     * @return the fecha_fin
+     * @param fchFin the fchFin to set
      */
-    public String getFecha_fin() {
-        return fecha_fin;
+    public void setFchFin(String fchFin) {
+        this.fchFin = fchFin;
     }
 
     /**
-     * @param fecha_fin the fecha_fin to set
+     * @return the Imagen
      */
-    public void setFecha_fin(String fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public String getImagen() {
+        return Imagen;
     }
 
     /**
-     * @return the estado
+     * @param Imagen the Imagen to set
      */
-    public String getEstado() {
-        return estado;
-    }
-
-    /**
-     * @param estado the estado to set
-     */
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    /**
-     * @return the cantidad
-     */
-    public String getCantidad() {
-        return cantidad;
-    }
-
-    /**
-     * @param cantidad the cantidad to set
-     */
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    /**
-     * @return the precio
-     */
-    public String getPrecio() {
-        return precio;
-    }
-
-    /**
-     * @param precio the precio to set
-     */
-    public void setPrecio(String precio) {
-        this.precio = precio;
+    public void setImagen(String Imagen) {
+        this.Imagen = Imagen;
     }
 
   

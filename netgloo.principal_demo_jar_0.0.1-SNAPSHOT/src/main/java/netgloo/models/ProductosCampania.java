@@ -16,14 +16,14 @@ import javax.validation.constraints.NotNull;
 
 @Entity(name="ProductosCampania")
 public class ProductosCampania {
-    
     @NotNull
     @Id
+    private int productosCampania;
+    @NotNull
     private int idCampania;
 
-    public ProductosCampania(int idCampania, int idProducto) {
-        this.idCampania = idCampania;
-        this.idProducto = idProducto;
+    public ProductosCampania(int idCampania) {
+        this.idCampania = idCampania;       
     }
     @NotNull
     private int idProducto;

@@ -31,7 +31,7 @@ public class ProductoDao {
                 /**
                  * Save the user in the database.
                  */
-                public void create(Producto producto) {
+                public void create(Productos producto) {
                     entityManager.persist(producto);
                     return;
                 }
@@ -39,11 +39,11 @@ public class ProductoDao {
                   /**
                * Return the user having the passed id.
                */
-              public List<Producto> getByCodigoProduto(int id) {
-                   List<Producto> list = new ArrayList<>();
+              public List<Productos> getByCodigoProduto(int codigo_producto) {
+                   List<Productos> list = new ArrayList<>();
                   return  (list) = entityManager.createQuery(
-                    "from Producto where id = :id")
-                    .setParameter("id", id)
+                    "from Productos where codigo_producto = :codigo_producto")
+                    .setParameter("codigo_producto", codigo_producto)
                     .getResultList();
               }
 

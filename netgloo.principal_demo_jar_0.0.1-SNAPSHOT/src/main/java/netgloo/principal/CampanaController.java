@@ -72,8 +72,10 @@ public class CampanaController {
             @RequestParam("fecha_inicio") String fecha_inicio,@RequestParam("fecha_fin") String fecha_fin,
             @RequestParam("estado") String estado,@RequestParam("cantidad") String cantidad,@RequestParam("precio") String precio) {
         try {
-            Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
-            estado,cantidad,precio);
+            //Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
+            
+            //estado,cantidad,precio);
+            Campaña campaña = new Campaña();
             campañaDao.create(campaña);
         } catch (Exception ex) {
             return "Error creating the user: " + ex.toString();
@@ -96,10 +98,24 @@ public class CampanaController {
         }
         return campaña;
     }
+    
+        // Metodo para obtner la campaña segun el email
+    //localhost:8080/user/12
+    @RequestMapping(value = "/campanas", method = RequestMethod.GET)
+    public  List<Campaña> getAllCampana() throws IndexOutOfBoundsException {
+        
+        List<Campaña> listCampaña = new ArrayList<Campaña>();
+        try {            
+            listCampaña = campañaDao.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listCampaña;
+    }
 
     // Metodo para eliminar la campaña
     //localhost:8080/user/12
-    @RequestMapping(value = "/campana/{codigo_campana}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/campanas/{codigo_campana}", method = RequestMethod.DELETE)
     public String deleteCampana(@PathVariable("codigo_campana") int codigo_campana) throws IndexOutOfBoundsException {
         try {
             Campaña campaña = new Campaña(codigo_campana);
@@ -119,8 +135,9 @@ public class CampanaController {
             @RequestParam("fecha_inicio") String fecha_inicio,@RequestParam("fecha_fin") String fecha_fin,
             @RequestParam("estado") String estado,@RequestParam("cantidad") String cantidad,@RequestParam("precio") String precio) {
         try {
-            Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
-            estado,cantidad,precio);
+            //Campaña campaña = new Campaña(codigo_campana, nombre_campana, codigo_producto,fecha_inicio,fecha_fin,
+            //estado,cantidad,precio);
+            Campaña campaña = new Campaña();
             campañaDao.update(campaña);
 
         } catch (Exception e) {

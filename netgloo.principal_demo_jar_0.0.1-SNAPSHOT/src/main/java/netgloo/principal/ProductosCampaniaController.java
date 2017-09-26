@@ -8,7 +8,7 @@ package netgloo.principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import netgloo.models.Producto;
+import netgloo.models.Productos;
 import netgloo.models.ProductoDao;
 import netgloo.models.ProductosCampania;
 import netgloo.models.ProductosCampaniaDao;
@@ -29,15 +29,17 @@ public class ProductosCampaniaController {
 
     @Autowired
     private ProductosCampaniaDao productoCampaniaDao;
+    
+    @Autowired
+    private ProductoDao productoDao;
 
     /*?id=1&espectaculo=SERGIO&fecha=12/12/17&idCiudad=12&precio=123456*/
     @RequestMapping(value = "/createProductoCampania", method = RequestMethod.POST)
     @ResponseBody
-    public String createCampana(@RequestParam("idProducto") int id,
-            @RequestParam("idCampania") int idCampania) {
+    public String createCampana(@RequestParam("idCampania") int id) {
         try {
             ProductosCampania productoCampania = new ProductosCampania
-        (id, idCampania);
+        (id);
             productoCampaniaDao.create(productoCampania);
         } catch (Exception ex) {
             return "Error creating the orden: " + ex.toString();
@@ -47,18 +49,32 @@ public class ProductosCampaniaController {
 
     // Metodo para obtner la campaña segun el email
     //localhost:8080/user/12
-    @RequestMapping(value = "/productoCampania/{codigoProducto}", method = RequestMethod.GET)
-    public ProductosCampania getProducto(@PathVariable("codigoProducto") int codigoProducto) throws IndexOutOfBoundsException {
-        ProductosCampania producto = new ProductosCampania();
-        try {
-            List<ProductosCampania> listProducto = new ArrayList<ProductosCampania>();
-            listProducto = productoCampaniaDao.getByCodigoProduto(codigoProducto);
-            producto = listProducto.get(0);
-
+    @RequestMapping(value = "/productoCampania/{codigoCampania}", method = RequestMethod.GET)
+    public List<Productos> getProducto(@PathVariable("codigoCampania") int codigoCampania) throws IndexOutOfBoundsException {        
+        List<ProductosCampania> listProductoCampania = new ArrayList<ProductosCampania>();
+        List<Productos> listFinal = new ArrayList<Productos>();
+        try {            
+            listProductoCampania = productoCampaniaDao.getByCodigoProduto(codigoCampania);
+            List<Integer> listInt = new ArrayList<Integer>();
+            
+            for (ProductosCampania productosCampania: listProductoCampania){
+               listInt.add(productosCampania.getIdProducto());
+            }                                    
+            for (Integer var: listInt){
+               Productos producto = new Productos();
+               List<Productos> list = new ArrayList<Productos>();               
+               list = productoDao.getByCodigoProduto(var);
+               
+               producto = list.get(0);
+               if(producto != null){
+               listFinal.add(producto);
+               }
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return producto;
+        return listFinal;
     }
 
 }
