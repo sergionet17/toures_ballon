@@ -7,9 +7,12 @@ package netgloo.models;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,33 +22,34 @@ import javax.validation.constraints.NotNull;
 @Entity(name="PRODUCTO_ORDENES_TB")
 public class ProductoOrdenes {
 
-    @NotNull
+    @SequenceGenerator(name="seq",sequenceName = "S_PRODUCTOS")
+    @GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "seq") 
     @Id
     private int codigoItem;
     @NotNull
     private int codigoProducto;
-    @NotNull
-    private String nombreProducto;
-    @NotNull
-    private String numeroParte;
+    //@NotNull
+    //private String nombreProducto;
     @NotNull
     private int precio;
     @NotNull
     private int cantidad;
-    @ManyToOne
-    @JoinColumn(name = "CODIGO_ORDEN")
-    private OrdenVenta ordenVenta;
+    @NotNull
+    private int codigoOrdenProd;
 
-    public ProductoOrdenes(int codigoItem, int codigoProducto, String nombreProducto, String numeroParte, int precio, int cantidad, OrdenVenta ordenVenta) {
+    public ProductoOrdenes(int codigoItem, 
+            int codigoProducto, 
+            String nombreProducto, String numeroParte, 
+            int precio, int cantidad,int codigoOrdenProd) {
         this.codigoItem = codigoItem;
         this.codigoProducto = codigoProducto;
-        this.nombreProducto = nombreProducto;
-        this.numeroParte = numeroParte;
+      //  this.nombreProducto = nombreProducto;
         this.precio = precio;
         this.cantidad = cantidad;
-        this.ordenVenta = ordenVenta;
+        this.codigoOrdenProd = codigoOrdenProd;
     }
     
+    public ProductoOrdenes(){}
     
 
     /**
@@ -79,30 +83,17 @@ public class ProductoOrdenes {
     /**
      * @return the nombreProductoM
      */
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
+    //public String getNombreProducto() {
+    //    return nombreProducto;
+   // }
 
     /**
      * @param nombreProductoM the nombreProductoM to set
      */
-    public void setNombreProductoM(String nombreProductoM) {
-        this.nombreProducto = nombreProductoM;
-    }
+    //public void setNombreProductoM(String nombreProductoM) {
+    //    this.nombreProducto = nombreProductoM;
+    //}
 
-    /**
-     * @return the numeroParte
-     */
-    public String getNumeroParte() {
-        return numeroParte;
-    }
-
-    /**
-     * @param numeroParte the numeroParte to set
-     */
-    public void setNumeroParte(String numeroParte) {
-        this.numeroParte = numeroParte;
-    }
 
     /**
      * @return the precio
@@ -135,15 +126,15 @@ public class ProductoOrdenes {
     /**
      * @return the ordenVenta
      */
-    public OrdenVenta getOrdenVenta() {
-        return ordenVenta;
-    }
+   public int getCodigoOrdenProd() {
+        return codigoOrdenProd;
+   }
 
     /**
      * @param ordenVenta the ordenVenta to set
      */
-    public void setOrdenVenta(OrdenVenta ordenVenta) {
-        this.ordenVenta = ordenVenta;
-    }
+    public void setCodigoOrdenProd(int codigoOrdenProd) {
+        this.codigoOrdenProd = codigoOrdenProd;
+   }
 
 }

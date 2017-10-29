@@ -29,7 +29,16 @@ public class OrdenDao {
      /**
      * Save the user in the database.
      */
-    public void create(ProductoOrdenes productoOrdenes) {
+    public void create(OrdenVenta ordenVenta) {
+        entityManager.persist(ordenVenta);
+        return;
+    }
+    
+    
+     /**
+     * Save the products
+     */
+    public void createProduct(ProductoOrdenes productoOrdenes) {
         entityManager.persist(productoOrdenes);
         return;
     }

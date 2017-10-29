@@ -5,13 +5,18 @@
  */
 package netgloo.principal;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import netgloo.models.Campaña;
 import netgloo.models.CampañaDao;
 import netgloo.models.OrdenDao;
 import netgloo.models.OrdenVenta;
+import netgloo.models.PedidoProductoDTO;
 import netgloo.models.ProductoOrdenes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,28 +33,38 @@ public class OrdenController {
         @Autowired
         private OrdenDao ordenDao;
     
-    /*localhost:8080/createOrden?codigoOrden=123457&fecha=
-            12/12/2017&precio=1234&estado=act&comentarios=piro
-            &numeroDocCliente=1234567&tipoDocCliente=duro&codigoItem=12
-            &codigoProducto=13&nombreProductoM=TEST&numeroParte=123&precio=1234&cantidad=21*/
-    @RequestMapping(value = "/createOrden", method = RequestMethod.POST)
+    
+    @RequestMapping(value = "/createOrden", method = RequestMethod.POST,consumes ="application/json" )    
     @ResponseBody
-    public String createOrden(@RequestParam("codigoOrden") int codigoOrden,
-            @RequestParam("fecha") String fecha, @RequestParam("precio") int precio,
-            @RequestParam("estado") String estado, @RequestParam("comentarios") String comentarios,
-            @RequestParam("numeroDocCliente") String numeroDocCliente, @RequestParam("tipoDocCliente") String tipoDocCliente,
-            @RequestParam("codigoItem") int codigoItem,@RequestParam("codigoProducto") int codigoProducto,
-            @RequestParam("nombreProductoM") String nombreProductoM,@RequestParam("numeroParte") String numeroParte,
-            @RequestParam("precio") int tipoDocClienteProducto,@RequestParam("cantidad") int cantidad) {
+    public String createOrden(@RequestBody List<PedidoProductoDTO> pedidoProductoDTORequest) throws SQLException{
+        int n = 1000;
+        int numero = (int) (Math.random() * n) + 1;
+        
         try {
-            OrdenVenta ordenVenta = new OrdenVenta(codigoOrden, fecha, precio, estado, comentarios,
-                    numeroDocCliente, tipoDocCliente);
-            ProductoOrdenes ordenes = new ProductoOrdenes(codigoItem, 
-                    codigoProducto, nombreProductoM, numeroParte, precio, cantidad, ordenVenta);
-            ordenDao.create(ordenes);
+            
+            OrdenVenta ordenVenta = new OrdenVenta();
+            ordenVenta.setCodigoOrden(numero);
+            ordenVenta.setComentarios("1");
+            ordenVenta.setEstado("1");
+            ordenVenta.setFecha("12-12-2017");
+            ordenVenta.
+                    setNumeroDocCliente(pedidoProductoDTORequest.get(0).getNumeroDocCliente());
+            ordenVenta.setPrecio(12);
+            ordenVenta.setTipoDocCliente("VIP");
+            ordenDao.create(ordenVenta);
+        
+            for(PedidoProductoDTO pedidoProductoDTO: pedidoProductoDTORequest){
+                ProductoOrdenes productoOrdenes = new ProductoOrdenes();
+                productoOrdenes.setCantidad(pedidoProductoDTO.getCantidad());
+                productoOrdenes.setCodigoProducto(pedidoProductoDTO.getCodigoProducto());
+                productoOrdenes.setPrecio(pedidoProductoDTO.getPrecio());                
+                productoOrdenes.setCodigoOrdenProd(numero);
+                ordenDao.createProduct(productoOrdenes);                
+            }
+            
         } catch (Exception ex) {
             return "Error creating the orden: " + ex.toString();
         }
-        return "Orden succesfully created!";
+        return "Orden creada con exito su numero de orden es: "+numero+"  ";
     }
 }

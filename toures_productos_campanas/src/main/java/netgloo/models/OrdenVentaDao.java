@@ -32,7 +32,7 @@ public class OrdenVentaDao {
     public List<OrdenVenta> getByCodigoOrdenVenta(int codigo_orden) {
         List<OrdenVenta> list = new ArrayList<>();
         return (list) = entityManager.createQuery(
-                "from OrdenVenta where codigo_orden = :codigo_orden")
+                "from ORDENES_VENTA_TB where codigo_orden = :codigo_orden")
                 .setParameter("codigo_orden", codigo_orden)
                 .getResultList();
     }
