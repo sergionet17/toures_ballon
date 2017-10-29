@@ -88,4 +88,24 @@ public class OrdenController {
 
         return ordenDTOs;
     }
+
+    @RequestMapping(value = "/deleteOrden/{codigoOrden}", method = RequestMethod.DELETE)
+    public String deleteOrden(@PathVariable("codigoOrden") int codigoOrden) throws IndexOutOfBoundsException {
+        try {
+            List<ProductoOrdenes> productoOrdenes = new ArrayList<ProductoOrdenes>();
+            OrdenVenta ordenVenta = new OrdenVenta();
+            productoOrdenes = ordenDao.getProductoByCodigoOrden(codigoOrden);
+
+            for (ProductoOrdenes ordenes : productoOrdenes) {
+                ordenDao.deleteProduct(ordenes);
+            }
+            ordenVenta = ordenDao.getOdenVentaByCodigoOrden(codigoOrden);
+            ordenDao.deleteOrder(ordenVenta);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "No existe una campaña con el id referenciado";
+        }
+        return "Se elimino la campana correctamente";
+    }
+
 }
