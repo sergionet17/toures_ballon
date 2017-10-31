@@ -5,20 +5,28 @@
  */
 package netgloo.models;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author sergio
  */
-@Entity(name="OrdenVenta")
-public class OrdenVenta {
+@Entity(name="ORDENES_VENTA_TB")
+public class OrdenVenta implements Serializable {
 
     @Id
-    @NotNull
+    //@SequenceGenerator(name="seq",sequenceName = "S_ORDENES")
+    //@GeneratedValue(strategy =GenerationType.SEQUENCE,generator = "seq") 
     private int codigoOrden;
     @NotNull
     private String fecha;
@@ -32,7 +40,9 @@ public class OrdenVenta {
     private String numeroDocCliente;
     @NotNull
     private String tipoDocCliente;
-    
+    //@ManyToOne(cascade = CascadeType.ALL)
+    //@JoinColumn
+    //private ProductoOrdenes productoOrdenes;
     public OrdenVenta(){
         
     }
@@ -46,6 +56,7 @@ public class OrdenVenta {
         this.comentarios = comentarios;
         this.numeroDocCliente = numeroDocCliente;
         this.tipoDocCliente = tipoDocCliente;
+        //this.productoOrdenes = productoOrdenes;
     }
 
     /**
@@ -145,5 +156,19 @@ public class OrdenVenta {
     public void setTipoDocCliente(String tipoDocCliente) {
         this.tipoDocCliente = tipoDocCliente;
     }
+
+    /**
+     * @return the productoOrdenes
+     */
+  //  public ProductoOrdenes getProductoOrdenes() {
+  //      return productoOrdenes;
+ // }
+
+    /**
+     * @param productoOrdenes the productoOrdenes to set
+     */
+//    public void setProductoOrdenes(ProductoOrdenes productoOrdenes) {
+//        this.productoOrdenes = productoOrdenes;
+//    }
 
 }

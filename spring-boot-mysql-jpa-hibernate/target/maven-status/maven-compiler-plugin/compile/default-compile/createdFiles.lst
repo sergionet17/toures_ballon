@@ -1,6 +1,0 @@
-netgloo/controllers/UserController.class
-netgloo/models/User.class
-netgloo/Application.class
-netgloo/models/UserDao.class
-netgloo/controllers/MainController.class
-netgloo/configs/DatabaseConfig.class
