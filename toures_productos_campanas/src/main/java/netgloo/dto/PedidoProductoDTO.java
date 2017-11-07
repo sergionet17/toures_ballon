@@ -16,6 +16,10 @@ public class PedidoProductoDTO {
     private int precio;
     private int cantidad;
     private String numeroDocCliente;
+    private int codigoProveedorTrans;
+    private int numeroRerserveTrans;
+    private int codProveedorAloj;
+    private int numeroReserveAloj;
 
     /**
      * @return the codigoItem
@@ -86,8 +90,60 @@ public class PedidoProductoDTO {
     public void setNumeroDocCliente(String numeroDocCliente) {
         this.numeroDocCliente = numeroDocCliente;
     }
-    
-    
-    
-    
+
+    /**
+     * @return the codigoProveedorTrans
+     */
+    public int getCodigoProveedorTrans() {
+        return codigoProveedorTrans;
+    }
+
+    /**
+     * @param codigoProveedorTrans the codigoProveedorTrans to set
+     */
+    public void setCodigoProveedorTrans(int codigoProveedorTrans) {
+        this.codigoProveedorTrans = codigoProveedorTrans;
+    }
+
+    /**
+     * @return the numeroRerserveTrans
+     */
+    public int getNumeroRerserveTrans() {
+        return numeroRerserveTrans;
+    }
+
+    /**
+     * @param numeroRerserveTrans the numeroRerserveTrans to set
+     */
+    public void setNumeroRerserveTrans(int numeroRerserveTrans) {
+        this.numeroRerserveTrans = numeroRerserveTrans;
+    }
+
+    /**
+     * @return the codProveedorAloj
+     */
+    public int getCodProveedorAloj() {
+        return codProveedorAloj;
+    }
+
+    /**
+     * @param codProveedorAloj the codProveedorAloj to set
+     */
+    public void setCodProveedorAloj(int codProveedorAloj) {
+        this.codProveedorAloj = codProveedorAloj;
+    }
+
+    /**
+     * @return the numeroReserveAloj
+     */
+    public int getNumeroReserveAloj() {
+        return numeroReserveAloj;
+    }
+
+    /**
+     * @param numeroReserveAloj the numeroReserveAloj to set
+     */
+    public void setNumeroReserveAloj(int numeroReserveAloj) {
+        this.numeroReserveAloj = numeroReserveAloj;
+    }   
 }

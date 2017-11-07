@@ -42,6 +42,10 @@ public class OrdenController {
     public String createOrden(@RequestBody List<PedidoProductoDTO> pedidoProductoDTORequest) throws SQLException {
         int n = 1000;
         int numero = (int) (Math.random() * n) + 1;
+        int nHotelReserva = 1000;
+        int numeroHotel = (int) (Math.random() * nHotelReserva) + 1;
+        int nTrasporte = 1000;
+        int numeroTransporte = (int) (Math.random() * nTrasporte) + 1;
 
         try {
 
@@ -62,6 +66,10 @@ public class OrdenController {
                 productoOrdenes.setCodigoProducto(pedidoProductoDTO.getCodigoProducto());
                 productoOrdenes.setPrecio(pedidoProductoDTO.getPrecio());
                 productoOrdenes.setCodigoOrdenProd(numero);
+                productoOrdenes.setCodProveedorAloj(pedidoProductoDTO.getCodProveedorAloj());
+                productoOrdenes.setCodigoProveedorTrans(pedidoProductoDTO.getCodigoProveedorTrans());
+                productoOrdenes.setNumeroRerserveTrans(numeroTransporte);
+                productoOrdenes.setNumeroReserveAloj(numeroHotel);
                 ordenDao.createProduct(productoOrdenes);
             }
 
@@ -71,26 +79,32 @@ public class OrdenController {
         return "Orden creada con exito su numero de orden es: " + numero + "  ";
     }
 
-    @RequestMapping(value = "/getOrdenes/{cedula}", method = RequestMethod.GET)
-    public List<OrdenDTO> obtenerOrdenes(@PathVariable("cedula") int cedula) {
+    @RequestMapping(value = "/getOrdenes", method = RequestMethod.PUT)
+    public List<OrdenDTO> obtenerOrdenes(@RequestBody OrdenVenta ordenVenta_cedula) {
         List<OrdenDTO> ordenDTOs = new ArrayList<OrdenDTO>();
         List<OrdenVenta> ordenVentas = new ArrayList<OrdenVenta>();
-
+        int cedula = Integer.parseInt(ordenVenta_cedula.getNumeroDocCliente());
         ordenVentas = ordenDao.getAllOrdenes(cedula);
 
+        
         for (OrdenVenta ordenVenta : ordenVentas) {
             OrdenDTO ordenDTO = new OrdenDTO();
             ordenDTO.setEstado(Util.numerToState(ordenVenta.getEstado()));
             ordenDTO.setFecha(ordenVenta.getFecha());
             ordenDTO.setCodigoOrden(ordenVenta.getCodigoOrden());
-            ordenDTOs.add(ordenDTO);
+            
+            if (ordenVenta.getEstado().equals("2") || ordenVenta.getEstado().equals("1")){
+               ordenDTOs.add(ordenDTO);    
+            }
+            
         }
 
         return ordenDTOs;
     }
 
-    @RequestMapping(value = "/deleteOrden/{codigoOrden}", method = RequestMethod.DELETE)
-    public String deleteOrden(@PathVariable("codigoOrden") int codigoOrden) throws IndexOutOfBoundsException {
+    @RequestMapping(value = "/deleteOrden", method = RequestMethod.DELETE)
+    public String deleteOrden(@RequestBody OrdenVenta ordenVenta_cedula) throws IndexOutOfBoundsException {
+        int codigoOrden = ordenVenta_cedula.getCodigoOrden();
         try {
             List<ProductoOrdenes> productoOrdenes = new ArrayList<ProductoOrdenes>();
             OrdenVenta ordenVenta = new OrdenVenta();
@@ -103,9 +117,26 @@ public class OrdenController {
             ordenDao.deleteOrder(ordenVenta);
         } catch (Exception e) {
             e.printStackTrace();
-            return "No existe una campaña con el id referenciado";
+            return "No existe una orden con el id referenciado";
         }
-        return "Se elimino la campana correctamente";
+        return "Se elimino la orden correctamente";
+    }
+
+    @RequestMapping(value = "/cancelaOrden", method = RequestMethod.PUT)
+    public String cancelaOrden(@RequestBody OrdenVenta ordenVenta_cedula) throws IndexOutOfBoundsException {
+        int codigoOrden = ordenVenta_cedula.getCodigoOrden();
+        try {
+            OrdenVenta ordenVenta = new OrdenVenta();
+
+            ordenVenta = ordenDao.getOdenVentaByCodigoOrden(codigoOrden);
+            ordenVenta.setEstado("5");
+
+            ordenDao.updateOrdenCancelar(ordenVenta);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "No existe una orden con el id referenciado";
+        }
+        return "Se cancelo la orden correctamente";
     }
 
 }

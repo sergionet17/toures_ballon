@@ -55,11 +55,11 @@ public class OrdenDao {
                 .getResultList();
     }
 
-    public List<ProductoOrdenes> getProductoByCodigoOrden(int codigoProducto) {
-        List<ProductoOrdenes> list = new ArrayList<>();
+    public List<ProductoOrdenes> getProductoByCodigoOrden(int codigoOrdenProd) {
+        List<ProductoOrdenes> list = new ArrayList<ProductoOrdenes>();
         return (list) = entityManager.createQuery(
-                "from PRODUCTO_ORDENES_TB WHERE CODIGO_ORDEN_PROD = :codigoProducto")
-                .setParameter("codigoProducto", codigoProducto)
+                "from PRODUCTO_ORDENES_TB WHERE CODIGO_ORDEN_PROD = :codigoOrdenProd")
+                .setParameter("codigoOrdenProd", codigoOrdenProd)
                 .getResultList();
     }
 
@@ -99,6 +99,13 @@ public class OrdenDao {
      */
     public void updateOrdenCancelar(OrdenVenta ordenVenta) {
         entityManager.merge(ordenVenta);
+        return;
+    }
+    /**
+     * Update the productoOrden user in the database.
+     */
+    public void updateProductoOrden(ProductoOrdenes productoOrdenes) {
+        entityManager.merge(productoOrdenes);
         return;
     }
 
