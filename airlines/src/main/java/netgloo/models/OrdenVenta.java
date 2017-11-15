@@ -40,8 +40,6 @@ public class OrdenVenta implements Serializable {
     private String numeroDocCliente;
     @NotNull
     private String tipoDocCliente;
-    
-    
     //@ManyToOne(cascade = CascadeType.ALL)
     //@JoinColumn
     //private ProductoOrdenes productoOrdenes;
@@ -158,8 +156,6 @@ public class OrdenVenta implements Serializable {
     public void setTipoDocCliente(String tipoDocCliente) {
         this.tipoDocCliente = tipoDocCliente;
     }
-
-
 
     /**
      * @return the productoOrdenes
