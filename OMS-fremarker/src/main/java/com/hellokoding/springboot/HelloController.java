@@ -1,6 +1,10 @@
 package com.hellokoding.springboot;
 
+<<<<<<< HEAD
 
+=======
+import com.baeldung.freemarker.model.Car;
+>>>>>>> 751f240a18959020865a515c1f7315f8c28b8202
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -11,8 +15,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+<<<<<<< HEAD
 import spring.free.pojo.Car;
 import spring.free.pojo.Producto;
+=======
+>>>>>>> 751f240a18959020865a515c1f7315f8c28b8202
 import spring.free.pojo.Usuario;
 
 @Controller
@@ -49,6 +56,7 @@ public class HelloController {
         model.addAttribute("userList", userList);
         return "user";
     }
+<<<<<<< HEAD
     
     @RequestMapping(value = "/crearProducto", method = RequestMethod.GET)
     public String crearProducto(@ModelAttribute("model") ModelMap model) {
@@ -73,6 +81,8 @@ public class HelloController {
         model.addAttribute("varString", varString);
         return "producto";
     }
+=======
+>>>>>>> 751f240a18959020865a515c1f7315f8c28b8202
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addCar(@ModelAttribute("car") Car car) {

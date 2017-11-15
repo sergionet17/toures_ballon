@@ -34,6 +34,7 @@ legend { font-weight: bold; }
 </div>
 
 <div id="content">
+<<<<<<< HEAD
 	
   <fieldset>
   	<legend>Nuevo Usuario</legend>
@@ -44,6 +45,9 @@ legend { font-weight: bold; }
   </form>
   </fieldset>
 
+=======
+  
+>>>>>>> 751f240a18959020865a515c1f7315f8c28b8202
   <br/>
   <table class="datatable">
   	<tr>

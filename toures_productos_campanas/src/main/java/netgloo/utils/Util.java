@@ -21,7 +21,7 @@ public class Util {
         } else if (valor.equals("3")) {
             estado = "Cerrada";
         } else if (valor.equals("4")) {
-            estado = "En Validacion";
+            estado = "Rechazada";
         } else if (valor.equals("5")) {
             estado = "Cancelada";
         } 
