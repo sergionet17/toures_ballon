@@ -47,7 +47,7 @@ legend { font-weight: bold; }
 
     <div class="container">
   <h2>Horizontal form</h2>
-  <form class="form-horizontal" name="cProducto" action="add" method="post" >
+  <form class="form-horizontal" name="cProducto" action="addProducto" method="post" >
     <div class="form-group">
       <label class="control-label col-sm-2" for="nombre">Email:</label>
       <div class="col-sm-10">
