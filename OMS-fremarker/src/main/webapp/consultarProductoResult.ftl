@@ -36,72 +36,39 @@ legend { font-weight: bold; }
 <body>
 <div id="header">
 <H2>
-	Administracion de Productos
+	Lista  de Productos
 </H2>
 </div>
 
 <div id="content">
-	
-  <fieldset>
-  	<legend>Crear Producto</legend>
-
-    <div class="container">
-  <h2>Horizontal form</h2>
-  <form class="form-horizontal" name="cProducto" action="addProducto" method="post" >
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="nombre">Email:</label>
-      <div class="col-sm-10">
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter nombre" name="nombre">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="id">Password:</label>
-      <div class="col-sm-10">          
-        <input type="password" class="form-control" id="id" placeholder="Enter id" name="id">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-  <form class="form-horizontal" name="car" action="add" method="post">
-  	<div class="form-group">
-    Nombre : <input type="text" name="make" class="form-control" />	<br/>
-  	</div>
-    <div class="form-group" >
-    Descripcion: <input type="text" name="model" class="form-control" id="pwd" placeholder="Ingrese descripcion"/>	<br/>
-  	</div>
-    <input type="submit" value="Crear Producto" />
-  </form>
-  </fieldset>
-
   <br/>
   <div class="table-responsive">
   
     <table class="table">
   	 <tr>
-  		  <th>Nombre</th>  <th>Descipcion</th>
+  		  <th>Ciudad</th>
+        <th>Cantidad</th>  <th>Codigo Producto</th>
+        <th>Descripcion</th>  <th>Fecha Fin</th>
+        <th>Fecha Inicio </th>  <th>Precio</th>
+        <th>Proveedor hoteleria</th>  <th>Proveedor transporte</th>        
   	   </tr>
-      <#list model["productolts"] as producto>
+      <#list model["productoList"] as producto>
 	  	  <tr>
-	  		 <td class="col-xs-4" >${producto.nombre}</td> 
-         <td class="col-xs-4" >${producto.id}</td>
-         <td>
+         <td class="col-xs-1" >${producto.codigo}</td>
+         <td class="col-xs-1" >${producto.cantidad}</td>
+         <td class="col-xs-1" >${producto.codigoProducto}</td>
+         <td class="col-xs-2" >${producto.descripcion}</td>
+         <td class="col-xs-1" >${producto.fechaFin}</td>
+         <td class="col-xs-1" >${producto.fechaIni}</td>
+         <td class="col-xs-1" >${producto.precio}</td>
+         <td class="col-xs-1" >${producto.proveedorHotele}</td>
+         <td class="col-xs-1" >${producto.proveedorTrans}</td>
+         <!--
+         <td>         
          <input class="btn btn-info" class="col-xs-4" type="submit" value="Crear Producto" />
          <input class="btn btn-info" class="col-xs-4" type="submit" value="Eliminar Producto" />
          </td>
+         -->
 	  	  </tr>
       </#list>
     </table>

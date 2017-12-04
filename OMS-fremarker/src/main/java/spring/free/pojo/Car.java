@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 package spring.free.pojo;
-=======
-package com.baeldung.freemarker.model;
->>>>>>> 751f240a18959020865a515c1f7315f8c28b8202
+
+
+
 
 public class Car {
 

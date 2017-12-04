@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.Properties;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -30,6 +31,9 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		wsdl11Definition.setLocationUri("/ws");
 		wsdl11Definition.setTargetNamespace("http://spring.io/guides/gs-producing-web-service");
 		wsdl11Definition.setSchema(countriesSchema);
+                //Properties soapActions;
+            //soapActions = "http://fer2.klab/notify/ServiceRequest";
+              //  wsdl11Definition.setSoapActions(soapActions);
 		return wsdl11Definition;
 	}
 

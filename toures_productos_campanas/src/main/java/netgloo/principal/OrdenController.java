@@ -40,11 +40,11 @@ public class OrdenController {
     @RequestMapping(value = "/createOrden", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public String createOrden(@RequestBody List<PedidoProductoDTO> pedidoProductoDTORequest) throws SQLException {
-        int n = 1000;
+        int n = 10000000;
         int numero = (int) (Math.random() * n) + 1;
-        int nHotelReserva = 1000;
+        int nHotelReserva = 10000000;
         int numeroHotel = (int) (Math.random() * nHotelReserva) + 1;
-        int nTrasporte = 1000;
+        int nTrasporte = 10000000;
         int numeroTransporte = (int) (Math.random() * nTrasporte) + 1;
 
         try {
@@ -62,14 +62,19 @@ public class OrdenController {
 
             for (PedidoProductoDTO pedidoProductoDTO : pedidoProductoDTORequest) {
                 ProductoOrdenes productoOrdenes = new ProductoOrdenes();
-                productoOrdenes.setCantidad(pedidoProductoDTO.getCantidad());
+                int numeroCantidad = 1234;
+                numeroCantidad = Integer.parseInt(pedidoProductoDTO.getCantidad());
+                productoOrdenes.setCantidad(numeroCantidad);
                 productoOrdenes.setCodigoProducto(pedidoProductoDTO.getCodigoProducto());
-                productoOrdenes.setPrecio(pedidoProductoDTO.getPrecio());
+                int numeroPrecio = 1234;
+                numeroPrecio = Integer.parseInt(pedidoProductoDTO.getPrecio());
+                productoOrdenes.setPrecio(numeroPrecio);
                 productoOrdenes.setCodigoOrdenProd(numero);
                 productoOrdenes.setCodProveedorAloj(pedidoProductoDTO.getCodProveedorAloj());
                 productoOrdenes.setCodigoProveedorTrans(pedidoProductoDTO.getCodigoProveedorTrans());
                 productoOrdenes.setNumeroRerserveTrans(numeroTransporte);
                 productoOrdenes.setNumeroReserveAloj(numeroHotel);
+                productoOrdenes.setCantidad(numeroCantidad);
                 ordenDao.createProduct(productoOrdenes);
             }
 

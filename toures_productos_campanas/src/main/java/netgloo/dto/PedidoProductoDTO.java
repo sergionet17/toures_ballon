@@ -13,8 +13,8 @@ public class PedidoProductoDTO {
     
     private int codigoItem;
     private int codigoProducto;
-    private int precio;
-    private int cantidad;
+    private String precio;
+    private String cantidad;
     private String numeroDocCliente;
     private int codigoProveedorTrans;
     private int numeroRerserveTrans;
@@ -52,28 +52,28 @@ public class PedidoProductoDTO {
     /**
      * @return the precio
      */
-    public int getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
     /**
      * @param precio the precio to set
      */
-    public void setPrecio(int precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
     /**
      * @return the cantidad
      */
-    public int getCantidad() {
+    public String getCantidad() {
         return cantidad;
     }
 
     /**
      * @param cantidad the cantidad to set
      */
-    public void setCantidad(int cantidad) {
+    public void setCantidad(String cantidad) {
         this.cantidad = cantidad;
     }
 

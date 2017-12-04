@@ -43,28 +43,22 @@ legend { font-weight: bold; }
 <div id="content">
 	
   <fieldset>
-  	<legend>Crear Producto</legend>
+  	<legend>Consulta Producto</legend>
 
     <div class="container">
-  <h2>Horizontal form</h2>
+  <h2>Consulta Producto</h2>
   <form class="form-horizontal" name="cProducto" action="addProducto" method="post" >
     <div class="form-group">
-      <label class="control-label col-sm-2" for="nombre">Email:</label>
+      <label class="control-label col-sm-2" for="codigo">Codigo</label>
       <div class="col-sm-10">
-        <input type="nombre" class="form-control" id="nombre" placeholder="Enter nombre" name="nombre">
+        <input type="codigo" class="form-control" id="codigo" placeholder="Ingrese codigo producto" name="codigo">
       </div>
     </div>
+  
     <div class="form-group">
-      <label class="control-label col-sm-2" for="id">Password:</label>
+      <label class="control-label col-sm-2" for="id">Nombre:</label>
       <div class="col-sm-10">          
-        <input type="password" class="form-control" id="id" placeholder="Enter id" name="id">
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-          <label><input type="checkbox" name="remember"> Remember me</label>
-        </div>
+        <input type="nombre" class="form-control" id="nombre" placeholder="Ingrese nombre del produto" name="nombre">
       </div>
     </div>
     <div class="form-group">        
@@ -75,37 +69,9 @@ legend { font-weight: bold; }
   </form>
 </div>
 
-
-  <form class="form-horizontal" name="car" action="add" method="post">
-  	<div class="form-group">
-    Nombre : <input type="text" name="make" class="form-control" />	<br/>
-  	</div>
-    <div class="form-group" >
-    Descripcion: <input type="text" name="model" class="form-control" id="pwd" placeholder="Ingrese descripcion"/>	<br/>
-  	</div>
-    <input type="submit" value="Crear Producto" />
-  </form>
   </fieldset>
 
   <br/>
-  <div class="table-responsive">
-  
-    <table class="table">
-  	 <tr>
-  		  <th>Nombre</th>  <th>Descipcion</th>
-  	   </tr>
-      <#list model["productolts"] as producto>
-	  	  <tr>
-	  		 <td class="col-xs-4" >${producto.nombre}</td> 
-         <td class="col-xs-4" >${producto.id}</td>
-         <td>
-         <input class="btn btn-info" class="col-xs-4" type="submit" value="Crear Producto" />
-         <input class="btn btn-info" class="col-xs-4" type="submit" value="Eliminar Producto" />
-         </td>
-	  	  </tr>
-      </#list>
-    </table>
-  </div>
 </div>  
 </body>
 </html>  
